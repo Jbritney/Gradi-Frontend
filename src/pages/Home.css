@@ -42,11 +42,13 @@
 
 .product-grid {
   display: flex;
-  justify-content: center;
+  justify-content: flex-start;
   gap: 20px;
-  padding: 20px 0;
-  flex-wrap: nowrap;        /* stay in a row */
-  overflow-x: auto;         /* scroll on smaller screens */
+  padding: 20px 20px 20px 40px;  /* top right bottom left */
+  flex-wrap: nowrap;
+  overflow-x: auto;
+  scroll-padding-left: 40px;     /* improves snap in some cases */
+  scroll-behavior: smooth;
 }
 
 .product-card {

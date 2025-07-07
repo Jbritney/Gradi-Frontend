@@ -1,9 +1,30 @@
 // src/pages/Register.js
-import React from 'react';
+import React, { useState } from 'react';
 import Navbar from '../components/Navbar';
 import './Register.css';
+import { registerUser } from '../api/auth'; // frontend path to the API file
 
 const Register = () => {
+  const [form, setForm] = useState({
+    name: '',
+    email: '',
+    password: ''
+  });
+
+  const handleChange = (e) => {
+    setForm({ ...form, [e.target.name]: e.target.value });
+  };
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    try {
+      const data = await registerUser(form);
+      alert('Registration successful!');
+    } catch (err) {
+      console.error(err);
+      alert('Registration failed.');
+    }
+  };
   return (
     <>
       <Navbar />
